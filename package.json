@@ -1,0 +1,31 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "learning react",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharonkamalkothapalli/learning-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "sharon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharonkamalkothapalli/learning-react/issues"
+  },
+  "homepage": "https://github.com/sharonkamalkothapalli/learning-react#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist": [
+    "latest 2 versions"
+  ]
+}

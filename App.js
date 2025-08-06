@@ -1,48 +1,12 @@
-{/* <div id="parent">
-    <div id="child">
-        <h1>I am h1 tag</h1>
-    </div>
-</div> */}
-
-// const heading = React.createElement("h1", {id:"heading", xyz:"abc"}, "Hello world from React!");
-
-// const parent = React.createElement("div", {id:"parent"}, 
-//     React.createElement("div", {id:"child"},
-//         React.createElement("h1", {}, "I am h1 tag")
-//     )
-// )
-
-
-// {/* <div id="parent">
-//     <div id="child">
-//         <h1>I am h1 tag</h1>
-//         <h2>I am h2 tag</h2>
-//     </div>
-// </div> */}
-
-// const parent = React.createElement("div", {id:"parent"}, 
-//     React.createElement("div", {id:"child"},
-//         [React.createElement("h1", {}, "I am h1 tag"), React.createElement("h2", {}, "I am h2 tag")]
-//     )
-// )
-
-{/* <div id="parent">
-    <div id="child1">
-        <h1>I am h1 tag</h1>
-        <h2>I am h2 tag</h2>
-    </div>
-    <div id="child2">
-        <h1>I am h1 tag</h1>
-        <h2>I am h2 tag</h2>
-    </div>
-</div> */}
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const parent = React.createElement("div", {id:"parent"}, 
-    [React.createElement("div", {id:"child1"},
-        [React.createElement("h1", {}, "I am h1 tag"), React.createElement("h2", {}, "I am h2 tag")]
+    [React.createElement("div", {id:"child1", key:"child1"},
+        [React.createElement("h1", {key: "h1-1"}, "I am a y !!!! "), React.createElement("h2", {key: "h2-1"}, "I am h2 tag")]
     ),
-    React.createElement("div", {id:"child2"},
-        [React.createElement("h1", {}, "I am h1 tag"), React.createElement("h2", {}, "I am h2 tag")]
+    React.createElement("div", {id:"child2", key:"child2"},
+        [React.createElement("h1", {key: "h1-2"}, "I am h1 tag -----"), React.createElement("h2", {key: "h2-1"}, "I am h2 tag")]
     )]
 )
 
