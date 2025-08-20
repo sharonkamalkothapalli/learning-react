@@ -31,18 +31,18 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-3 p-3">
           <input
             type="text"
-            className="search-box"
+            className="border-1 border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="bg-green-100 px-4 py-2 m-4 rounded-lg"
             onClick={() => {
               const filteredListOfRestaurents = listOfRestaurents.filter(
                 (res) =>
@@ -54,20 +54,22 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredListOfRestaurents = listOfRestaurents.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setfilteredRestaurents(filteredListOfRestaurents);
-            console.log(filteredListOfRestaurents);
-          }}
-        >
-          Top Rated Restaurents
-        </button>
+        <div className="search m-3 p-3">
+          <button
+            className="bg-blue-100 px-4 py-2 m-4 rounded-lg"
+            onClick={() => {
+              const filteredListOfRestaurents = listOfRestaurents.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setfilteredRestaurents(filteredListOfRestaurents);
+              console.log(filteredListOfRestaurents);
+            }}
+          >
+            Top Rated Restaurents
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="res-container grid gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {/* <RestaurentCard resData={resList[0]} /> */}
         {filteredRestaurents.map((restaurent) => (
           <Link
