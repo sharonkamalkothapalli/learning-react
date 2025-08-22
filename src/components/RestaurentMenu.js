@@ -1,9 +1,12 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useRestarurentMenu from "../../utils/useRestaurentMenu";
+import RestaurentCategory from "./RestaurentCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
 
   const resInfo = useRestarurentMenu(resId);
 
@@ -16,21 +19,32 @@ const RestaurantMenu = () => {
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
       ?.itemCards || [];
 
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
+    <div className="menu text-center p-4 m-4">
+      <h1 className="font-bold p-4 text-3xl">{name}</h1>
+      <p className="font-bold text-xl px-2">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item?.card?.info.id}>
-            {item?.card?.info.name} - {"Rs. "}
-            {item?.card?.info.defaultPrice || item?.card?.info.price}
-          </li>
+      {/* Iterate over each category and pass it to a restaurentcategory component. this component is responsible to create category wise accordian */}
+      <div>
+        {categories.map((category, index) => (
+          <RestaurentCategory
+            key={category?.card?.card?.categoryId}
+            data={category?.card?.card}
+            showItems={index == showIndex}
+            setShowIndex={setShowIndex}
+            index={index}
+            currentIndex={showIndex}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

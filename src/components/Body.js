@@ -1,4 +1,4 @@
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, { withPromotedLabel } from "./RestaurentCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
@@ -11,6 +11,9 @@ const Body = () => {
   const [filteredRestaurents, setfilteredRestaurents] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurentCardPromoted = withPromotedLabel(RestaurentCard);
+  const defaultPromoted = true;
 
   useEffect(() => {
     setListofRestaurents(restaurents);
@@ -29,6 +32,7 @@ const Body = () => {
     return <Shimmer />;
   }
 
+  console.log("Body rendered", restaurents);
   return (
     <div className="body">
       <div className="filter flex">
@@ -76,7 +80,11 @@ const Body = () => {
             key={restaurent.info.id}
             to={"/restaurents/" + restaurent.info.id}
           >
-            <RestaurentCard resData={restaurent} />
+            {defaultPromoted ? (
+              <RestaurentCardPromoted resData={restaurent} />
+            ) : (
+              <RestaurentCard resData={restaurent} />
+            )}
           </Link>
         ))}
       </div>
