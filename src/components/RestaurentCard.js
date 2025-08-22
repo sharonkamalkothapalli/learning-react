@@ -5,8 +5,6 @@ import UserContext from "../../utils/UserContext";
 const RestaurentCard = ({ resData }) => {
   const { cloudinaryImageId, name, cuisines, avgRating, sla } = resData?.info;
 
-  const { loggedInUser } = useContext(UserContext);
-
   return (
     <div className="res-card m-4 p-4 w-64 h-[380px] rounded-lg bg-gray-100 hover:bg-amber-100 flex flex-col">
       <img
@@ -21,7 +19,6 @@ const RestaurentCard = ({ resData }) => {
       <div className="mt-auto">
         <h4 className="font-semibold">{avgRating} ⭐</h4>
         <h4>{sla.deliveryTime} mins</h4>
-        <h4>{loggedInUser}</h4>
       </div>
     </div>
   );

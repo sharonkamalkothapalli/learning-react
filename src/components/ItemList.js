@@ -1,6 +1,15 @@
 import { CDN_URL } from "../../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItems = (item) => {
+    dispatch(addItem(item));
+    console.log(item);
+  };
+
   return (
     <div>
       <ul>
@@ -31,7 +40,10 @@ const ItemList = ({ items }) => {
                 className="w-full h-full rounded-2xl object-cover"
                 alt={item?.card?.info?.name}
               />
-              <button className="absolute bottom-2 right-2 bg-white text-black px-3 py-1 rounded-md shadow">
+              <button
+                className="absolute bottom-2 right-2 bg-white text-black px-3 py-1 rounded-md shadow cursor-pointer"
+                onClick={() => handleAddItems(item)}
+              >
                 Add +
               </button>
             </div>

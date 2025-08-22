@@ -9,6 +9,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 // import Grocery from "./components/Grocery";
 import { lazy, Suspense, useContext, useEffect, useState } from "react";
 import UserContext from "../utils/UserContext";
+import appStore from "../utils/appStore";
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -19,18 +22,20 @@ const AppLayout = () => {
   useEffect(() => {
     // you make some api calls and get the data
     const data = {
-      name: "Akshay",
+      name: "Sharon",
     };
 
     setUserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -62,6 +67,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

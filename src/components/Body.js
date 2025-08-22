@@ -32,7 +32,6 @@ const Body = () => {
     return <Shimmer />;
   }
 
-  console.log("Body rendered", restaurents);
   return (
     <div className="body">
       <div className="filter flex">
@@ -46,7 +45,7 @@ const Body = () => {
             }}
           />
           <button
-            className="bg-green-100 px-4 py-2 m-4 rounded-lg"
+            className="bg-green-100 px-4 py-2 m-4 rounded-lg cursor-pointer"
             onClick={() => {
               const filteredListOfRestaurents = listOfRestaurents.filter(
                 (res) =>
@@ -60,7 +59,7 @@ const Body = () => {
         </div>
         <div className="search m-3 p-3">
           <button
-            className="bg-blue-100 px-4 py-2 m-4 rounded-lg"
+            className="bg-blue-100 px-4 py-2 m-4 rounded-lg cursor-pointer"
             onClick={() => {
               const filteredListOfRestaurents = listOfRestaurents.filter(
                 (res) => res.info.avgRating > 4
